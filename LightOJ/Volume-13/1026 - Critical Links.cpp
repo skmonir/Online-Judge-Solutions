@@ -14,7 +14,6 @@ vector < pair <int, int> > ans;
 int used[N], low[N], in[N];
 
 void dfs(int cur, int par = -1) {
-    int son = 0;
     used[cur] = 1;
     low[cur] = in[cur] = ++timer;
     for (int i = 0; i < g[cur].size(); i++) {
@@ -22,7 +21,6 @@ void dfs(int cur, int par = -1) {
         if (to == par) continue;
         if (used[to]) low[cur] = min(low[cur], in[to]);
         else {
-            son++;
             dfs(to, cur);
             low[cur] = min(low[cur], low[to]);
             if (low[to] > in[cur]) {
