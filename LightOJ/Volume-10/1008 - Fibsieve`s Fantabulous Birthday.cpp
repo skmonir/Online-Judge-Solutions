@@ -26,7 +26,7 @@ void solve(LL k) {
         if (f(mid) >= k) hi = mid - 1;
         else lo = mid + 1;
     }
-    for (LL i = lo - (1 ^ (lo % 2)) - 2, cc = 7; cc && i <= hi; cc--, i += 2) {
+    for (LL i = lo - (1 ^ (lo & 1)) - 2; i <= hi; i += 2) {
         if (f(i) >= k) {lo = i; break;}
     }
     LL n = (lo + 1) >> 1, x, y;
