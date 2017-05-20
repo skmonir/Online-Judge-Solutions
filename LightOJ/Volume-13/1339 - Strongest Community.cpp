@@ -30,10 +30,10 @@ void build(int nd, int s, int e) {
     c[nd][0] = c[nd << 1][0], c[nd][1] = c[nd << 1 | 1][1];
     if (t[nd << 1][1] == t[nd << 1 | 1][0]) {
         mx[nd] = max(mx[nd], c[nd << 1][1] + c[nd << 1 | 1][0]);
-        if (t[nd << 1][0] == t[nd << 1][1] and md - s + 1 == c[nd << 1][0]) {
+        if (md - s + 1 == c[nd << 1][0]) {
             c[nd][0] = c[nd << 1][0] + c[nd << 1 | 1][0];
         }
-        if (t[nd << 1 | 1][0] == t[nd << 1 | 1][1] and e - md == c[nd << 1 | 1][1]) {
+        if (e - md == c[nd << 1 | 1][1]) {
             c[nd][1] = c[nd << 1][1] + c[nd << 1 | 1][1];
         }
     }
@@ -58,8 +58,8 @@ node ask(int nd, int s, int e, int l, int r) {
     int cc0 = lf.c0, cc1 = rg.c1;
     if (lf.t1 == rg.t0) {
         res = max(res, lf.c1 + rg.c0);
-        if (lf.t0 == lf.t1 and md - s + 1 == lf.c0) cc0 = lf.c0 + rg.c0;
-        if (rg.t0 == rg.t1 and e - md == rg.c1) cc1 = lf.c1 + rg.c1;
+        if (md - s + 1 == lf.c0) cc0 = lf.c0 + rg.c0;
+        if (e - md == rg.c1) cc1 = lf.c1 + rg.c1;
     }
     return {res, lf.t0, rg.t1, cc0, cc1};
 }
