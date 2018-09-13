@@ -22,7 +22,6 @@ long long call(int zr, int l, int small, int r, int big) {
 }
 
 long long calc(long long x) {
-    if (x == 0) return 0;
     if (x < 10) return x;
     n = 0;
     while (x > 0) {
